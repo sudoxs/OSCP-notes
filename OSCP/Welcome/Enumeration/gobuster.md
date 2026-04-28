@@ -20,26 +20,20 @@ gobuster dns -u ... -w ...
 /api_name/v1
 
 --add-slash
--t 5
--q
--x php,html,txt,js,conf,backup,bak
--k 
--s "200,301,302"
--b "404,403"
---exclude-length 0
 --append-domain
 --force
 
-|فلگ|توضیح|
-|---|---|
-|`-u`|URL هدف|
-|`-w`|wordlist|
-|`-t`|تعداد thread (مثلاً 50 برای سرعت)|
-|`-x`|پسوند فایل (php,txt,html)|
-|`-s`|فقط status code خاص (مثلاً 200,301)|
-|`-b`|blacklist status (مثلاً 404)|
-|`-o`|ذخیره خروجی|
-|`-k`|ignore SSL|
+| فلگ       | توضیح                                                           |
+| --------- | --------------------------------------------------------------- |
+| `-u`      | URL هدف                                                         |
+| `-w`      | wordlist                                                        |
+| `-t`      | تعداد thread (مثلاً 50 برای سرعت)                               |
+| `-x`      | پسوند فایل (php,txt,html)<br>-x php,html,txt,js,conf,backup,bak |
+| `-s`      | فقط status code خاص (مثلاً 200,301)<br>-s "200,301,302"         |
+| `-b`      | blacklist status (مثلاً 404)<br>-b "404,403"                    |
+| `-o`      | ذخیره خروجی                                                     |
+| `-k`      | ignore SSL                                                      |
+| --xl 1917 | این اندازه رو در نظر نگیر                                       |
 
 ---
 

